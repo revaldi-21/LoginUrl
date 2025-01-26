@@ -37,7 +37,12 @@ app.all('/player/login/dashboard', function (req, res) {
         if (uName[1] && uPass[1]) { res.redirect('/player/growid/login/validate'); }
     } catch (why) { console.log(`Warning: ${why}`); }
 
-    res.render(__dirname + '/public/html/dashboard.ejs', { data: tData });
+    res.render(__dirname + '/public/html/login.ejs', { data: tData });
+});
+
+app.all('/player/register/dashboard', function (req, res) {
+    
+    res.render(__dirname + '/public/html/register.ejs', { data: tData });
 });
 
 app.all('/player/growid/login/validate', (req, res) => {
@@ -51,6 +56,21 @@ app.all('/player/growid/login/validate', (req, res) => {
 
     res.send(
         `{"status":"success","message":"Account Validated.","token":"${token}","url":"","accountType":"growtopia"}`,
+    );
+});
+
+app.all('/player/growid/register/validate', (req, res) => {
+    const _token = req.body._token;
+    const growId = req.body.growId;
+    const password = req.body.password;
+    const email = req.body.email;
+
+    const token = Buffer.from(
+        `_token=${_token}&growId=${growId}&password=${password}&email=${email}`,
+    ).toString('base64');
+
+    res.send(
+        `{"status":"success","message":"Account Created.","token":"${token}","url":"","accountType":"growtopia"}`,
     );
 });
 
