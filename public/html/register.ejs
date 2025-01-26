@@ -80,20 +80,7 @@
     </div>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (localStorage.getItem('growId')) {
-        document.getElementById('growId').innerHTML = `GrowID: ${localStorage.getItem('growId')}`;
-        document.getElementById('loginGrowId').value = localStorage.getItem('growId');
-        document.getElementById('accountLoggedIn').classList.remove('hidden');
-      }
-      if (localStorage.getItem('password')) { 
-        document.getElementById('loginPassword').value = localStorage.getItem('password');
-        document.getElementById('accountLoggedIn').classList.remove('hidden');
-      }
-      // Login variables
-      const loginGrowId = document.getElementById('loginGrowId').value
-      const loginPassword = document.getElementById('loginPassword').value
-    });
+    
     document.getElementById('doYouNeedAccount').addEventListener('click', function () {
        window.location.href = "https://groundlogurl-gtps.vercel.app/player/login/dashboard";            
     });
