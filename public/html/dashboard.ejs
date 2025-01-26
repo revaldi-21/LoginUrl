@@ -111,6 +111,17 @@
       const loginForm = document.getElementById('loginForm');
       const uName = document.getElementById('loginGrowId').value;
       const uPass = document.getElementById('loginPassword').value;
+      const swearwords = ["KONTOL", "KNTL", "KHONTOL", "MEMEK", "MMK","MEKI", "PUKI", "CUKI", "MEMEX", "MEMEC", "PELER", "JEMBUT", "PALKON", "ITIL", "NGENTOT", "NGEN", "NGTD", "BOKEP", "BKP", "BUGIL", "TELANJANG", "PEPEK", "TETEK", "TTK", "PENTIL", "NENEN", "PAYUDARA", "PUTING", "PENIS", "KEMALUAN", "PORN", "PORNHUB", "XNXX", "XHAMSTER", "BOOBS", "DICK", "COCK", "PUSSY", "BRAZZER", "NIGGA", "NIGGER", "FUCK", "FCK", "SHIT", "ASS", "ASSHOLE", "BITCH", "SUCK", "HANDJOB", "BLOWJOB", "DOGGY", "ANJING", "AJG", "BABI", "BANGSAT", "PANTEK", "KIMAK", "BUJANG", "ENTOD", "BEGO", "BODOH", "TOLOL", "PEA", "JILMEK", "NYEPONG", "SEPONG", "ISEP", "JILAT", "MASJIB", "ISLAM", "MUSHOLA", "MUSHOLLA", "KITAB", "ALLAH", "TUHAN", "YESUS", "GEREJA", "ALQURAN", "QURAN", "ALKITAB", "MUHAMMAD", "NABI", "MARYAM", "AGAMA", "RELIGION", "TERRORIST ", "ALLAHUAKBAR", "SHOLAT", "SALIB", "YATIM", "PIATU", "CHRISTIAN", "GOD", "LONTE", "LONT", "MICHAT", "PSK", "ANIME", "HENTAI", "WIBU", "JAV", "BOCIL", "PEDO", "PEDOFIL", "BANCI", "PUKIMAK", "NGUYEN", "TAI", "BERSETUBUH", "SHOLAT", "DOA", "SHALAT", "PRAYER", "JESUS", "KISS", "CIPOKAN", "CIUM", "LGBT", "GAY", "LESBIAN", "LESBI", "PERAWAN", "JANDA", "GIGOLO", "TOBRUT"];
+
+      const upperUserInput = uName.toUpperCase();
+      
+      for (let swearword of swearwords) {
+        if (upperUserInput.includes(swearword)) {
+        		document.getElementById('errorDiv').classList.remove('hidden');
+        		document.getElementById('errorMessage').innerHTML = 'Your GrowID cannot contain a swear words';
+            	return;
+        	}
+    	}
 
       if (!uName || !uPass) {
         document.getElementById('errorDiv').classList.remove('hidden');
