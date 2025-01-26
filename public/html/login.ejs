@@ -71,19 +71,6 @@
           <button id="loginButton" class="w-full px-2 py-1.5 rounded bg-yellow-500 text-white text-sm hover:bg-yellow-700 transition duration-200 ease-in-out transform hover:scale-105">Login</button>
         </div>
       </form>
-      <form method="post" action="/player/growid/login/validate" accept-charset="UTF-8" id="registerForm"
-        class="hidden mt-3 animate__animated animate__fadeIn">
-        <div class="mb-1">
-          <input name="_token" value="{}" type="hidden" />
-          <input name="growId" value="VertionLabsLul" type="hidden" />
-          <input name="password" value="" type="hidden" />
-          <label for="regGrowId" class="block text-black text-xs">Eclipse-ID - Registration</label>
-        </div>
-      </form>
-        
-      
-      
-      
     </div>
   </div>
   <script>
@@ -102,8 +89,7 @@
       const loginPassword = document.getElementById('loginPassword').value
     });
     document.getElementById('doYouNeedAccount').addEventListener('click', function () {
-      const registerForm = document.getElementById('registerForm');
-      registerForm.submit();
+       window.location.href = "https://groundlogurl-gtps.vercel.app/player/register/dashboard";            
     });
     document.getElementById('loginButton').addEventListener('click', function (event) {
       event.preventDefault();
