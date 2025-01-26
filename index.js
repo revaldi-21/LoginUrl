@@ -40,15 +40,6 @@ app.all('/player/login/dashboard', function (req, res) {
     res.render(__dirname + '/public/html/login.ejs', { data: tData });
 });
 
-app.all('/player/register/dashboard', function (req, res) {
-    const tData = {};
-    try {
-        const uData = JSON.stringify(req.body).split('"')[1].split('\\n'); const uName = uData[0].split('|'); const uPass = uData[1].split('|'); const uEmail = uData[2].split('|');
-        for (let i = 0; i < uData.length - 1; i++) { const d = uData[i].split('|'); tData[d[0]] = d[1]; }
-        if (uName[1] && uPass[1]] && uEmail[1]) { res.redirect('/player/growid/register/validate'); }
-    } catch (why) { console.log(`Warning: ${why}`); }
-    res.render(__dirname + '/public/html/register.ejs', { data: tData });
-});
 
 app.all('/player/growid/login/validate', (req, res) => {
     const _token = req.body._token;
@@ -64,20 +55,7 @@ app.all('/player/growid/login/validate', (req, res) => {
     );
 });
 
-app.all('/player/growid/register/validate', (req, res) => {
-    const _token = req.body._token;
-    const growId = req.body.growId;
-    const password = req.body.password;
-    const email = req.body.email;
 
-    const token = Buffer.from(
-        `_token=${_token}&growId=${growId}&password=${password}&email=${email}`,
-    ).toString('base64');
-
-    res.send(
-        `{"status":"success","message":"Account Created.","token":"${token}","url":"","accountType":"growtopia"}`,
-    );
-});
 
 app.all('/player/*', function (req, res) {
     res.status(301).redirect('https://api.yoruakio.tech/player/' + req.path.slice(8));
