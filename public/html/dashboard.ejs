@@ -136,6 +136,25 @@
     </div>
   </div>
   <script>
+    function email(str) {
+    	if (str.length > 64 || str.length === 0) return false;
+    
+    	const atIndex = str.indexOf('@');
+    	const dotIndex = str.indexOf('.', atIndex);
+    
+    	if (atIndex === -1 || dotIndex === -1) return false;
+    
+    	if (atIndex < 1 || str.length - atIndex < 5) return false;
+    
+    	return true;
+    }
+    function isValidInput(input) {
+    	// Trim the input to remove leading and trailing spaces
+    	const trimmedInput = input.trim();
+    
+    	// Check if the trimmed input is empty
+    	return trimmedInput.length > 0;
+	}
     document.addEventListener('DOMContentLoaded', function () {
       if (localStorage.getItem('growId')) {
         document.getElementById('growId').innerHTML = `GrowID: ${localStorage.getItem('growId')}`;
@@ -196,7 +215,7 @@
         	}
     	}
 
-      if (!uName || !uPass) {
+      if (!isValidInput(uName) || !isValidInput(uPass)) {
         document.getElementById('errorDiv').classList.remove('hidden');
         document.getElementById('errorMessage').innerHTML = 'GrowID or Password is empty';
         return;
@@ -231,14 +250,21 @@
         	}
     	}
     
-    
-      if (!uName || !uPass || !uEmail) {
+      if (!isValidInput(uName) || !isValidInput(uPass) || !isValidInput(uEmail)) {
         document.getElementById('errorRegDiv').classList.remove('hidden');
         document.getElementById('errorRegMessage').innerHTML = 'GrowID or Password or Email is empty';
         return;
-      } else if (uName.length < 4 || uPass.length < 4) {
+      } else if (uName.length < 3 || uName.length > 18) {
         document.getElementById('errorRegDiv').classList.remove('hidden');
-        document.getElementById('errorRegMessage').innerHTML = 'Username or Password must be at least 4 characters long';
+        document.getElementById('errorRegMessage').innerHTML = "Oops!  Your GrowID must be between 3 and 18 characters long.";
+        return;
+      } else if (uPass.length < 4 || uPass.length > 18) {
+        document.getElementById('errorRegDiv').classList.remove('hidden');
+        document.getElementById('errorRegMessage').innerHTML = "Oops!  Your Password must be between 4 and 18 characters long.";
+        return;
+      } else if (!email(uEmail)) {
+        document.getElementById('errorRegDiv').classList.remove('hidden');
+        document.getElementById('errorRegMessage').innerHTML = "Oops!  Look, if you'd like to be able try retrieve your password if you lose it, you'd better enter a real email.  We promise to keep your data 100% private and never spam you.";
         return;
       } else {
         registerForm.submit();
