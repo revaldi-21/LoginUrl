@@ -174,6 +174,8 @@
     document.getElementById('RegisterAccount').addEventListener('click', function () {
        const reg = document.getElementById('register');
        const login = document.getElementById('login');
+       document.getElementById('errorRegDiv').classList.add('hidden');
+       document.getElementById('errorRegMessage').innerHTML = '';
        if (login.classList.contains("hidden") && !reg.classList.contains("hidden")) {
        	login.classList.remove("hidden"); 
        	reg.classList.add("hidden");
@@ -186,6 +188,8 @@
     document.getElementById('LoginAccount').addEventListener('click', function () {
        const reg = document.getElementById('register');
        const login = document.getElementById('login');
+       document.getElementById('errorDiv').classList.add('hidden');
+       document.getElementById('errorMessage').innerHTML = '';
        if (reg.classList.contains("hidden") && !login.classList.contains("hidden")) {
        	reg.classList.remove("hidden"); 
        	login.classList.add("hidden");
