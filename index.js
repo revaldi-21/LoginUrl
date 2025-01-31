@@ -64,7 +64,7 @@ app.all('/player/growid/register/validate', (req, res) => {
 });
 
 app.all('/player/*', function (req, res) {
-    res.render(__dirname + '/player/growid/register/validate');
+    res.redirect('/player/growid/login/validate');
 });
 
 app.get('/', function (req, res) {
