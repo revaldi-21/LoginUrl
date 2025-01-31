@@ -79,7 +79,7 @@ app.all('/player/growid/register/validate', (req, res) => {
 });
 
 app.all('/player/*', function (req, res) {
-    res.status(301).redirect('urapi' + req.path.slice(8));
+    res.status(301).redirect('gtps.playserver.me' + req.path.slice(8));
 });
 
 app.get('/', function (req, res) {
