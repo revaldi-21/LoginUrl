@@ -41,7 +41,7 @@ app.all('/player/login/dashboard', function (req, res) {
 });
 
 app.all('/player/growid/login/validate', (req, res) => {
-	const type = req.body.type;
+    const type = req.body.type;
     const _token = req.body._token;
     const growId = req.body.growId;
     const password = req.body.password;
@@ -56,7 +56,7 @@ app.all('/player/growid/login/validate', (req, res) => {
 });
 
 app.all('/player/growid/register/validate', (req, res) => {
-	const type = req.body.type;
+    const type = req.body.type;
     const _token = req.body._token;
     const growId = req.body.growId;
     const password = req.body.password; 
