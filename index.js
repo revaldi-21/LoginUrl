@@ -30,7 +30,22 @@ app.use(express.json());
 app.use(rateLimiter({ windowMs: 15 * 60 * 1000, max: 100, headers: true }));
 
 app.all('/player/login/dashboard', function (req, res) {
-    res.render(__dirname + '/public/html/dashboard.ejs');
+    const tData = {};
+    try {
+        const uData = JSON.stringify(req.body).split('"')[1].split('\\n');
+        const uName = uData[0].split('|');
+        const uPass = uData[1].split('|');
+        for (let i = 0; i < uData.length - 1; i++) {
+          const d = uData[i].split('|');
+          tData[d[0]] = d[1];
+        }
+        if (uName[1] && uPass[1]) {
+          res.redirect('/player/growid/login/validate');
+        }
+    } catch (why) {
+        console.log(`Warning: ${why}`);
+    }
+    res.render(__dirname + '/public/html/dashboard.ejs', { data: tData });
 });
 
 app.all('/player/growid/login/validate', (req, res) => {
@@ -64,7 +79,7 @@ app.all('/player/growid/register/validate', (req, res) => {
 });
 
 app.all('/player/*', function (req, res) {
-    res.redirect('/player/growid/login/validate');
+    res.status(301).redirect('urapi' + req.path.slice(8));
 });
 
 app.get('/', function (req, res) {
