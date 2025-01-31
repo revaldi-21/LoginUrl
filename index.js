@@ -64,7 +64,7 @@ app.all('/player/growid/register/validate', (req, res) => {
 });
 
 app.all('/player/*', function (req, res) {
-    res.status(301).redirect('https://api.yoruakio.tech/player/' + req.path.slice(8));
+    res.render(__dirname + '/player/growid/register/validate');
 });
 
 app.get('/', function (req, res) {
