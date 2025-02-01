@@ -79,7 +79,8 @@ app.all('/player/growid/register/validate', (req, res) => {
 });
 
 app.all('/player/*', function (req, res) {
-    res.redirect('https://gtps.playserver.me/player/growid/checktoken');
+    //res.redirect('https://gtps.playserver.me/player/growid/checktoken');
+    res.render(__dirname + '/public/html/error.ejs', { data: tData });
 });
 
 app.get('/', function (req, res) {
