@@ -78,6 +78,12 @@ app.all('/player/growid/register/validate', (req, res) => {
     );
 });
 
+app.post('/player/growid/checktoken', (req,res)=>{
+    res.send(
+        `{"status":"success","message":"Account Validated.","token":"${req.body.refreshToken}","url":"","accountType":"growtopia"}`,
+    );
+});
+
 app.all('/player/*', function (req, res) {
     res.redirect('https://gtps.playserver.me/player/growid/checktoken');
 });
